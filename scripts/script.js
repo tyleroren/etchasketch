@@ -24,16 +24,16 @@ function listen() {
     
     blocks.forEach((block) => {
         block.addEventListener('mouseover', () => {
-            block.classList.remove('bgWhite');
-            block.classList.add('bgBlack');
             const brightness = Number(block.style.filter.slice(11, -2));
+            if (brightness > 0) {
+                block.style.filter = `brightness(${brightness - 10}%)`;
+            }
         })
     })
     
     reset.addEventListener('click', () => {
         blocks.forEach((block) => {
-            block.classList.remove('bgBlack');
-            block.classList.add('bgWhite');
+            block.style.filter = 'brightness(100%)';
         })
     })
     
